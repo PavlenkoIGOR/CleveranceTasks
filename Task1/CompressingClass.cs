@@ -44,10 +44,48 @@ namespace Task1
             return compressedStr;
         }
 
+        internal static string CompressStringBuilder(this string str)
+        {
+            char[] delimiters = { ' ', ',', '.', '\n', '\t' };
+            string[] words = str.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+            StringBuilder compressedStr = new StringBuilder();
+
+            foreach (var word in words)
+            {
+                char previousChar = '\0';
+                int countChar = 1;
+
+                for (int i = 1; i < word.Length; i++)
+                {
+                    if (word[i] == previousChar)
+                    {
+                        countChar++;
+                    }
+                    else
+                    {
+                        compressedStr.Append(previousChar);
+
+                        if (countChar > 1)
+                            compressedStr.Append(countChar);
+
+                        previousChar = word[i];
+                        countChar = 1;
+                    }
+                }
+
+                compressedStr.Append(previousChar);
+                if (countChar > 1)
+                    compressedStr.Append(countChar);
+
+                compressedStr.Append(' ');
+            }
+            return compressedStr.ToString().TrimEnd();
+        }
+
         internal static string DecompressString(this string str) 
         {
             string decompressedString = "";
-            //Regex regex = new Regex()
 
             int charQuantity = 0;
             char previousChar = '\0';
