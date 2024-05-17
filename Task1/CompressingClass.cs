@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Task1
 {
     internal static class CompressingClass
     {
-        internal static string CompressedString(this string str)
+        internal static string CompressString(this string str)
         {
             char previousChar = str[0];
             string compressedStr = "";
@@ -40,6 +42,35 @@ namespace Task1
                 compressedStr += countChar;
             }
             return compressedStr;
+        }
+
+        internal static string DecompressString(this string str) 
+        {
+            string decompressedString = "";
+            //Regex regex = new Regex()
+
+            int charQuantity = 0;
+            char previousChar = '\0';
+
+            for (int i = 0; i < str.Length; i++) 
+            {
+                if (!char.IsDigit(str[i]))
+                {
+                    decompressedString += str[i];
+                }
+                else
+                {
+                    charQuantity = int.Parse(str[i].ToString());
+
+                    for (int j = 0; j < charQuantity-1; j++)
+                        {
+                            decompressedString += str[i-1];
+                        }
+                }
+                charQuantity = 0;
+            }
+
+            return decompressedString;
         }
     }
 }
