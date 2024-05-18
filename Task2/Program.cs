@@ -48,9 +48,6 @@ namespace Task2
 
             }
 
-
-
-
             Console.WriteLine("****** entered Array ******");
             Console.WriteLine($"rows {rowsEnterArray}");
             Console.WriteLine($"column {columnsEnterArray}");
@@ -63,23 +60,7 @@ namespace Task2
             }
             Console.WriteLine();
             #endregion
-            Console.WriteLine("массив для проверки");
-            int[,] arr = new int[3, 4] {
-                {1,2,3,4},
-                {5,6,7,8},
-                {9,10,11,12}
-            };
-            Console.WriteLine($"колонок: {arr.GetLength(1)}");
-            Console.WriteLine($"строк: {arr.GetLength(0)}");
-            for (int ii = 0; ii< arr.GetLength(0); ii++)
-            {
-                for (int jj = 0; jj < arr.GetLength(1); jj++)
-                {
-                    Console.Write($"{arr[ii, jj]}\t");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine($"элемент [1,2] = {arr[1, 2]}");
+            
         }
     }
 }
