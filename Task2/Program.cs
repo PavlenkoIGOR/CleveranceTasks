@@ -9,9 +9,9 @@ namespace Task2
         {
             #region
             int[,] array2dEnter = {
-                { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 }
+                { 1, 2, 3 },
+                { 5, 6, 7},
+                { 9, 10, 11 }
             };
 
             int rowsEnterArray = array2dEnter.GetUpperBound(0) + 1;

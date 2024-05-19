@@ -2,6 +2,7 @@
 {
     internal static class PsevdoServer
     {
+        static object locker = new object();
         static int _count;
         internal static int Count 
         { 
@@ -13,10 +14,12 @@
             await Task.Delay(2000);
             Console.WriteLine(Count);
         }
-        internal async static Task AddToCount() 
+        internal async static Task AddToCount(int value) 
         {
-            await Task.Delay(2000);
-            Count++;
+            lock (locker)
+            {                
+                Count+=value;
+            }
         }
     }
 }
