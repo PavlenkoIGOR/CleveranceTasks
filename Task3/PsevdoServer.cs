@@ -9,17 +9,19 @@
             get { return _count; }
             set { _count = value; }
         }
-        internal async static Task GetCount()
+        internal static void GetCount()
         {
-            await Task.Delay(2000);
             Console.WriteLine(Count);
         }
-        internal async static Task AddToCount(int value) 
+        internal static void AddToCount(int value) 
         {
             lock (locker)
-            {                
-                Count+=value;
+            {
+                Console.WriteLine($"Файл редактируется");
+                Count += value;
+                Thread.Sleep(2000);
             }
+            Console.WriteLine($"значение измнено {Count}");
         }
     }
 }
